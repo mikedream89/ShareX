@@ -43,20 +43,32 @@ public class DeviceManager extends SQLiteOpenHelper {
 
     public int getRemDevices() {
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor res=db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE DEVICE_TYPE == "+Constants.DEVICE_TYPE_PERMANENT, null);
-        return res.getCount();
+        Cursor res=db.rawQuery("SELECT 1 FROM "+TABLE_NAME+" WHERE DEVICE_TYPE=?", new String[]{String.valueOf(Constants.DEVICE_TYPE_PERMANENT)});
+        try {
+            return res.getCount();
+        } finally {
+            res.close();
+        }
     }
 
     public boolean isDeviceExist(String id) {
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor res=db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE DEVICE_ID='"+id+"' AND DEVICE_TYPE != "+Constants.DEVICE_TYPE_DENIED, null);
-        return (res.getCount()>0);
+        Cursor res=db.rawQuery("SELECT 1 FROM "+TABLE_NAME+" WHERE DEVICE_ID=? AND DEVICE_TYPE!=?", new String[]{id, String.valueOf(Constants.DEVICE_TYPE_DENIED)});
+        try {
+            return (res.getCount()>0);
+        } finally {
+            res.close();
+        }
     }
 
     public boolean isDeviceDenied(String id) {
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor res=db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE DEVICE_ID='"+id+"' AND DEVICE_TYPE == "+Constants.DEVICE_TYPE_DENIED, null);
-        return (res.getCount()>0);
+        Cursor res=db.rawQuery("SELECT 1 FROM "+TABLE_NAME+" WHERE DEVICE_ID=? AND DEVICE_TYPE=?", new String[]{id, String.valueOf(Constants.DEVICE_TYPE_DENIED)});
+        try {
+            return (res.getCount()>0);
+        } finally {
+            res.close();
+        }
     }
 
     public void clearAll() {
@@ -66,6 +78,6 @@ public class DeviceManager extends SQLiteOpenHelper {
 
     public void clearTmp() {
         SQLiteDatabase db=this.getWritableDatabase();
-        db.execSQL("DELETE FROM "+TABLE_NAME+" WHERE DEVICE_TYPE="+Constants.DEVICE_TYPE_TEMP+" OR DEVICE_TYPE="+Constants.DEVICE_TYPE_DENIED);
+        db.delete(TABLE_NAME, "DEVICE_TYPE=? OR DEVICE_TYPE=?", new String[]{String.valueOf(Constants.DEVICE_TYPE_TEMP), String.valueOf(Constants.DEVICE_TYPE_DENIED)});
     }
 }

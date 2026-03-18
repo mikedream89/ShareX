@@ -97,8 +97,12 @@ public class HistoryDBHelper extends SQLiteOpenHelper {
 
     private boolean checkHistoryExistByPath(String file_path) {
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor res=db.rawQuery("SELECT ID FROM "+TABLE_NAME+" WHERE PATH='"+file_path+"'", null);
-        return res.getCount() > 0;
+        Cursor res=db.rawQuery("SELECT 1 FROM "+TABLE_NAME+" WHERE PATH=?", new String[]{file_path});
+        try {
+            return res.getCount() > 0;
+        } finally {
+            res.close();
+        }
     }
 
     public long getItemCount() {
@@ -114,6 +118,6 @@ public class HistoryDBHelper extends SQLiteOpenHelper {
 
     public void deleteOne(String path) {
         SQLiteDatabase db=this.getWritableDatabase();
-        db.execSQL("DELETE FROM "+TABLE_NAME+" WHERE PATH='"+path+"'");
+        db.delete(TABLE_NAME, "PATH=?", new String[]{path});
     }
 }
