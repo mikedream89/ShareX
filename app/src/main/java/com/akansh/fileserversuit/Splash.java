@@ -11,8 +11,6 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.File;
-
 public class Splash extends AppCompatActivity {
 
     @Override
@@ -21,8 +19,9 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         TextView subText=findViewById(R.id.subtext);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            subText.setText(Html.fromHtml("<font color=\"#ff9933\">HANDCRAFTED</font> IN <font color=\"#138808\">INDIA</font>",Html.FROM_HTML_MODE_COMPACT));
-        }else{
+            subText.setText(Html.fromHtml("<font color=\"#ff9933\">HANDCRAFTED</font> IN <font color=\"#138808\">INDIA</font>", Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            //noinspection deprecation
             subText.setText(Html.fromHtml("<font color=\"#ff9933\">HANDCRAFTED</font> IN <font color=\"#138808\">INDIA</font>"));
         }
         try {
