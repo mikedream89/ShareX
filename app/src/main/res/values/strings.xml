@@ -18,4 +18,35 @@
     <string name="cd_toggle_logger">Toggle Log</string>
     <string name="cd_open_navbar">Open Navigation Bar</string>
 
+    <!-- Quiz question type strings -->
+    <string name="quiz_title">Quiz</string>
+    <string name="quiz_submit">Submit</string>
+    <string name="quiz_back">Back</string>
+
+    <string name="quiz_type_single">Single Choice</string>
+    <string name="quiz_type_multiple">Multiple Choice</string>
+    <string name="quiz_type_fill_blank">Fill in the Blank</string>
+    <string name="quiz_type_matching">Matching</string>
+    <string name="quiz_type_ordering">Ordering</string>
+    <string name="quiz_type_voice">Voice</string>
+    <string name="quiz_type_translation">Translation</string>
+    <string name="quiz_type_short_answer">Short Answer</string>
+    <string name="quiz_type_reading">Reading</string>
+
+    <string name="quiz_multiple_hint">(Select all that apply)</string>
+    <string name="quiz_matching_hint">Tap an item on each side to match</string>
+    <string name="quiz_ordering_hint">Drag items to arrange in correct order</string>
+    <string name="quiz_fill_blank_hint">Enter answer…</string>
+    <string name="quiz_short_answer_hint">Write your answer here…</string>
+    <string name="quiz_translation_hint">Write your translation here…</string>
+    <string name="quiz_tap_to_record">Tap to record</string>
+    <string name="quiz_record">Record</string>
+    <string name="quiz_play">Play</string>
+    <string name="quiz_delete_recording">Delete recording</string>
+    <string name="quiz_recording_ready">Recording ready</string>
+    <string name="quiz_read_more">Read more…</string>
+    <string name="quiz_reading_questions">Questions</string>
+    <string name="quiz_drag_handle">Drag handle</string>
+    <string name="quiz_question_label">Q%d. </string>
+
 </resources>
