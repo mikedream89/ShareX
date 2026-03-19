@@ -13,4 +13,5 @@
 /captures
 .externalNativeBuild
 .cxx
-/app/releasejavac.20260319_062039.args
+/app/release
+javac.*.args
